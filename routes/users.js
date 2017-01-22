@@ -19,21 +19,26 @@ router.get('/datepicker', function(req, res){
 	res.render('datepicker', {title: "Datepicker test"});
 });
 
+router.get('/angular', function(req, res){
+	res.render('angular-datepicker', {title: "Datepicker test"});
+});
+
+
 // Register User
 router.post('/signup', function(req, res){
-	
+
 	var email = req.body.email;
 	var username = req.body.username;
 	var password = req.body.password;
-	
+
 
 	// Validation
-	
+
 	req.checkBody('email', 'Email is required').notEmpty();
 	req.checkBody('email', 'Email is not valid').isEmail();
 	req.checkBody('username', 'Username is required').notEmpty();
 	req.checkBody('password', 'Password is required').notEmpty();
-	
+
 
 	var errors = req.validationErrors();
 

@@ -1,7 +1,7 @@
 <!doctype html>
 <head>
     <% include ./partials/head %>
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
 </head>
 <html ng-app='datepickerBasicUsage'>
 <body class="container">
@@ -9,19 +9,31 @@
         <% include ./partials/header %>
     </header>
 
-    <div ng-controller="AppCtrl" ng-cloak>
+    <div ng-controller="AppCtrl as ctrl" ng-cloak>
       <md-content layout-padding>
 
         <div layout-gt-xs="row">
           <div flex-gt-xs>
             <h4>Fecha</h4>
-            <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
+            <md-datepicker ng-model="myDate" ng-change="reqDate()" md-placeholder="Enter date"></md-datepicker>
           </div>
           <div flex-gt-xs>
-            <h4>Año: {{myDate.getFullYear()}}</h4>
-            <h4>Mes: {{myDate.getMonth()+1}}</h4>
-            <h4>Dia: {{myDate.getDate()}}</h4>
-            <h4>String Busqueda: {{myDate.getFullYear()+myDate.getMonth()+1+myDate.getDate()}}</h4>
+            <h4>Hora</h4>
+            <md-input-container>
+              <!--<label>Hora</label>-->
+                <md-select ng-model="time">
+                  <md-option ng-repeat="time in times" value="{{time}}">{{time}}</md-option>
+                </md-select>
+            </md-input-container>
+          </div>
+        </div>
+        
+        <div layout-gt-xs="row">  
+          <div flex-gt-xs>
+            <h4>Año: {{myDate.year}}</h4>
+            <h4>Mes: {{myDate.month}}</h4>
+            <h4>Dia: {{myDate.date}}</h4>
+            <h4>String Busqueda: {{myDate.stringBusqueda}}</h4>
           </div>
         </div>
 
@@ -32,13 +44,13 @@
         <% include ./partials/footer %>
     </footer>
 
-    <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js'></script>
-    <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js'></script>
-    <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js'></script>
-    <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js'></script>
 
     <!-- Angular Material Library -->
-    <script src='http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js'></script>
     <script src='/js/angular-datepicker.js'></script>
 </body>
 </html>

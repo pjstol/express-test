@@ -1,10 +1,13 @@
 var express = require('express');
-var rout = express.Router();
+var router = express.Router();
 
 // Get Homepage
-rout.get('/', function(req, res){
-    console.log('Working!');
+router.get('/', function(req, res){
+    console.log(req.body);
+    res.json({
+        message: "Yuhuuuu"
+    });
 // 	res.status(200).send('This is awesome');
 });
 
-module.exports = rout;
+module.exports = router;

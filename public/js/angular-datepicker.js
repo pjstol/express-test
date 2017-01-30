@@ -1,6 +1,6 @@
 /*global angular*/
 angular.module('datepickerBasicUsage',
-    ['ngMaterial', 'ngMessages']).controller('AppCtrl',['$scope','$http', function($scope,$http) {
+    ['ngMaterial', 'ngMessages']).controller('AppCtrl', function($scope,$http) {
 
   $scope.myDate = new Date();
 
@@ -17,17 +17,10 @@ angular.module('datepickerBasicUsage',
     // Try to use an http call from angularjs to the backend to fetch files in the static folder
     // $scope.times = array of the filenames in the static folder of the date selected
     /*global $http*/
-    return $http({
-      method: 'GET',
-      url: '/'
-      }).then(function successCallback(response) {
-        console.log(response);
-        // this callback will be called asynchronously
-        // when the response is available
-      }, function errorCallback(response) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
-      });
+    return $http.get('/api')
+        .success(function(response){
+            console.log(response);
+        }); 
     }
   $scope.times = ["10:20", "11:35", "12:50", "13:20", "14:55"];
-}]);
+});

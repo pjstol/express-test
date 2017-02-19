@@ -1,10 +1,11 @@
 {
-  "name": "passport-example",
+  "name": "test",
   "version": "0.0.0",
   "description": "An app to test everything.",
   "main": "server.js",
-  "repository": "",
+  "repository": "https://github.com/pjstol/express-test",
   "author": "Pedro Diaz",
+  "license": "UNLICENSED",
   "dependencies": {
     "bcryptjs": "^2.4.0",
     "body-parser": "^1.15.2",
@@ -15,6 +16,7 @@
     "express-validator": "^3.1.2",
     "fs": "0.0.1-security",
     "mongoose": "^4.7.5",
+    "nconf": "^0.8.4",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "path": "^0.12.7"

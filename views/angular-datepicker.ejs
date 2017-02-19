@@ -1,56 +1,45 @@
 <!doctype html>
 <head>
-    <% include ./partials/head %>
+    
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <!--<link rel="stylesheet" href="/css/datepicker.css">-->
 </head>
-<html ng-app='datepickerBasicUsage'>
-<body class="container">
-    <header>
-        <% include ./partials/header %>
-    </header>
-
-    <div ng-controller="AppCtrl as ctrl" ng-cloak>
-      <md-content layout-padding>
-
-        <div layout-gt-xs="row">
-          <div flex-gt-xs>
-            <h4>Fecha</h4>
-            <md-datepicker ng-model="myDate" ng-change="reqDate()" md-placeholder="Enter date"></md-datepicker>
-          </div>
-          <div flex-gt-xs>
-            <h4>Hora</h4>
-            <md-input-container>
-              <!--<label>Hora</label>-->
-                <md-select ng-model="time">
-                  <md-option ng-repeat="time in times" value="{{time}}">{{time}}</md-option>
-                </md-select>
-            </md-input-container>
-          </div>
-        </div>
-        
-        <div layout-gt-xs="row">  
-          <div flex-gt-xs>
-            <h4>Año: {{myDate.year}}</h4>
-            <h4>Mes: {{myDate.month}}</h4>
-            <h4>Dia: {{myDate.date}}</h4>
-            <h4>String Busqueda: {{myDate.stringBusqueda}}</h4>
-          </div>
-        </div>
-
-      </md-content>
+<html>
+<body layout="row" ng-app='datepickerBasicUsage' ng-cloak>
+  <div ng-controller="AppCtrl as ctrl">
+    
+    <div flex="30" layout="column" layout-padding>
+      <!--<h4>Fecha</h4>-->
+      <!--<md-datepicker ng-model="myDate" ng-change="reqDate()" md-placeholder="Enter date"></md-datepicker>-->
+      <!--<h4>Hora</h4>-->
+      <!--<md-input-container>-->
+        <!--<label>Hora</label>-->
+      <!--    <md-select ng-model="time">-->
+      <!--      <md-option ng-repeat="time in times" value="{{time}}">{{time}}</md-option>-->
+      <!--    </md-select>-->
+      <!--</md-input-container>-->
+      <!--<h4>Año: {{myDate.year}}</h4>-->
+      <!--<h4>Mes: {{myDate.month}}</h4>-->
+      <!--<h4>Dia: {{myDate.date}}</h4>-->
+      <!--<h4>String Busqueda: {{myDate.stringBusqueda}}</h4>-->
     </div>
+      
+    <div flex layout="column" layout-padding>  
+      <div>
+        <h1>Something</h1>
+        <!--<img src="https://storage.cloud.google.com/test-bucket-cam1/20161216/2017-02-10%2002%3A14%3A14%20PiShots.jpg?_ga=1.96147934.335727294.1487177358">-->
+      </div>
+    </div>
+    
+  </div>
+  
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js'></script>
 
-    <footer>
-        <% include ./partials/footer %>
-    </footer>
-
-    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js'></script>
-
-    <!-- Angular Material Library -->
-    <script src='https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js'></script>
-    <script src='/js/angular-datepicker.js'></script>
+  <!-- Angular Material Library -->
+  <script src='https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js'></script>
+  <script src='/js/angular-datepicker.js'></script>
 </body>
 </html>

@@ -22,10 +22,10 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
     return $http.get('/api')
         .then(function(response){
           $scope.times = response.data.message;
-          $scope.alfa = response.data.message[2].metadata.selfLink
+          $scope.alfa = "https://storage.googleapis.com/" + response.data.message[2].bucket.id + "/" + response.data.message[2].id;
           // console.log("Successful call to the API, " + response.data.message.length + " images available for the selected day =)");
           // console.log(response.data.messages);
-          console.log(response.data.message[2].metadata.selfLink);
+          console.log(response.data.message[2]);
         });
     }
 

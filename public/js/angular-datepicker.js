@@ -10,23 +10,31 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
 
   $scope.times = ["10:20", "11:35", "12:50", "13:20", "14:55"];
   $scope.alfa = "http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg";
+  $scope.fotos = [];
 
   $scope.reqDate = function(){
     $scope.myDate.year = ""+$scope.myDate.getFullYear();
     $scope.myDate.month = ("0" + ($scope.myDate.getMonth()+1)).slice(-2);
     $scope.myDate.date = ("0" + $scope.myDate.getDate()).slice(-2);
     $scope.myDate.stringBusqueda = ""+$scope.myDate.year+$scope.myDate.month+$scope.myDate.date;
-    // Try to use an http call from angularjs to the backend to fetch files in the static folder
-    // $scope.times = array of the filenames in the static folder of the date selected
+    
     /*global $http*/
-    return $http.get('/api')
-        .then(function(response){
-          $scope.times = response.data.message;
+    
+    return $http({
+        method: 'GET',
+        url: '/api',
+        params: { 
+            date: $scope.myDate.stringBusqueda, 
+            year: $scope.myDate.year,  
+            day: $scope.myDate.date
+        }
+    }).then(function(response){
+          $scope.fotos = response.data.message.name;
           $scope.alfa = "https://storage.googleapis.com/" + response.data.message[2].bucket.id + "/" + response.data.message[2].id;
           // console.log("Successful call to the API, " + response.data.message.length + " images available for the selected day =)");
           // console.log(response.data.messages);
-          console.log(response.data.message[2]);
+          console.log(response.data.message);
         });
     }
-
 });
+// return $http.get('/api')

@@ -9,6 +9,7 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
   $scope.myDate.stringBusqueda = ""+$scope.myDate.year+$scope.myDate.month+$scope.myDate.date;
 
   $scope.times = ["10:20", "11:35", "12:50", "13:20", "14:55"];
+  $scope.alfa = "http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg";
 
   $scope.reqDate = function(){
     $scope.myDate.year = ""+$scope.myDate.getFullYear();
@@ -21,8 +22,10 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
     return $http.get('/api')
         .then(function(response){
           $scope.times = response.data.message;
-          console.log("Successful call to the API, " + response.data.message.length + " images available for the selected day =)");
+          $scope.alfa = response.data.message[2].metadata.selfLink
+          // console.log("Successful call to the API, " + response.data.message.length + " images available for the selected day =)");
           // console.log(response.data.messages);
+          console.log(response.data.message[2].metadata.selfLink);
         });
     }
 

@@ -9,16 +9,16 @@ var bucket = gcs.bucket('test-bucket-cam1');
 bucket.getFiles(function(err, files){
   if(err){
     console.log(err);
-  } else {  
+  } else {
     for(var i = 0; i<files.length; i++){
-      images.push(files[i].name);
+      images.push(files[i]);
     }
   }
 });
 
 router.get('/', function(req, res){
     res.json({
-        message: images,
+        message: images
     });
 });
 

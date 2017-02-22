@@ -10,7 +10,7 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
                                     $scope.myDate.month+
                                     $scope.myDate.date;
 
-  $scope.times = ["10:20", "11:35", "12:50", "13:20", "14:55"];
+  $scope.times = [];
   $scope.fotos = [];
   $scope.triton = [];
 
@@ -25,9 +25,7 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
       // }
   }).then(function(response){
         $scope.triton = response.data.message;
-        for (var j = 0; j < $scope.triton.length ; j++){
-          $scope.fotos.push($scope.triton[j]);
-        }
+        $scope.fotos = response.data.message;
         $scope.proyecto = $scope.triton[20].id.substr(0,5);
         $scope.camara =  $scope.triton[20].id.substr(5,4);
         $scope.alfa = "https://storage.googleapis.com/" +
@@ -42,8 +40,21 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
   }
 
   $scope.reqDate = function(){
+    $scope.myDate = new Date();
+
+    $scope.myDate.year = ""+$scope.myDate.getFullYear();
+    $scope.myDate.month = ("0" + ($scope.myDate.getMonth()+1)).slice(-2);
+    $scope.myDate.date = ("0" + $scope.myDate.getDate()).slice(-2);
+    $scope.myDate.stringBusqueda = ""+$scope.myDate.year+
+                                      $scope.myDate.month+
+                                      $scope.myDate.date;
+
     //función de busqueda para dejar solo horas en el select de la hora
     //y seleccionar las fotos.
-    $scope.times = $scope.triton.name;
+    for (var i = 0; i < $scope.triton.length ; i++){
+      $scope.times.push($scope.fotos[i].id);
     }
+    console.log($scope.times);
+    console.log($scope.times.indexOf("qca1ccam1201702100212.jpg"));
+  }
 });

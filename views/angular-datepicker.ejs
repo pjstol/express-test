@@ -6,15 +6,18 @@
 <html>
 <body ng-app='myApp' ng-controller="AppCtrl as ctrl" layout="row" ng-cloak>
   <div flex="30" layout="column" layout-padding>
+
+    <code>Proyecto: {{proyecto}}</code>
+    <code>Camara: {{camara}}</code>
+
     <h4>Foto</h4>
     <md-input-container>
             <label>Fotos Disponibles</label>
-       <md-select ng-model="foto">
-         <md-option ng-repeat="foto in fotos" value="{{foto}}">{{foto}}</md-option>
+       <md-select ng-model="selectedFoto" ng-change="selectChanged()">
+         <md-option ng-repeat="foto in fotos" ng-value="foto">{{foto.name}}</md-option>
        </md-select>
     </md-input-container>
-    
-    
+
     <h4>Fecha</h4>
     <md-datepicker ng-model="myDate" ng-change="reqDate()" md-placeholder="Enter date"></md-datepicker>
     <h4>Hora</h4>
@@ -24,14 +27,16 @@
          <md-option ng-repeat="time in times" value="{{time}}">{{time}}</md-option>
        </md-select>
     </md-input-container>
-    <h4>year: {{myDate.year}}</h4>
+
+    <!-- <h4>year: {{myDate.year}}</h4>
     <h4>month: {{myDate.month}}</h4>
     <h4>day: {{myDate.date}}</h4>
     <h4>folder in bucket: {{myDate.stringBusqueda}}</h>
-    <h4>date returned: {{myDate}}</h>
+    <h4>date returned: {{myDate}}</h> -->
+
   </div>
+
   <div flex layout="column" layout-padding>
-    <h1>Something</h1>
     <img ng-src="{{alfa}}" class="caelus">
   </div>
 

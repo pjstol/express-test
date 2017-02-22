@@ -6,7 +6,6 @@ var gcs = require('@google-cloud/storage')({
 });
 
 var fotos = [];
-var images = [];
 var bucket = gcs.bucket('test-bucket-cam1');
 
 bucket.getFiles(function(err, files){
@@ -22,7 +21,7 @@ bucket.getFiles(function(err, files){
 router.get('/', function(req, res){
     console.log(req.query);
     res.json({
-        message: req.query
+        message: fotos
     });
 });
 

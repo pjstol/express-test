@@ -26,6 +26,7 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
   }).then(function(response){
         $scope.triton = response.data.message;
         $scope.fotos = response.data.message;
+        console.log($scope.fotos);
         $scope.proyecto = $scope.triton[20].id.substr(0,5);
         $scope.camara =  $scope.triton[20].id.substr(5,4);
         $scope.alfa = "https://storage.googleapis.com/" +
@@ -37,10 +38,11 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
     $scope.alfa = "https://storage.googleapis.com/" +
                   $scope.selectedFoto.bucket.id + "/" +
                   $scope.selectedFoto.id;
-  }
+  };
 
   $scope.reqDate = function(){
-    $scope.myDate = new Date();
+    
+    // $scope.myDate = new Date();
 
     $scope.myDate.year = ""+$scope.myDate.getFullYear();
     $scope.myDate.month = ("0" + ($scope.myDate.getMonth()+1)).slice(-2);
@@ -49,12 +51,29 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
                                       $scope.myDate.month+
                                       $scope.myDate.date;
 
-    //función de busqueda para dejar solo horas en el select de la hora
-    //y seleccionar las fotos.
     for (var i = 0; i < $scope.triton.length ; i++){
       $scope.times.push($scope.fotos[i].id);
     }
-    console.log($scope.times);
-    console.log($scope.times.indexOf("qca1ccam1201702100212.jpg"));
+    
+    function dia(a){
+      return a.indexOf($scope.myDate.stringBusqueda) > -1;
+    }
+    
+    Array.prototype.toHours = function(){
+      var temp = [];
+      for (var j = 0; j < this.length; j++){
+        temp.push(this[j].substr(17,2) + ':' + this[j].substr(19,2));
+      }
+      return temp;
+    }
+    
+    $scope.times = $scope.times.filter(dia).toHours();
+    
+  };
+  
+  $scope.selectedHour = function(){
+    $scope.alfa = "https://storage.googleapis.com/" +
+                  $scope.time.bucket.id + "/" +
+                  $scope.time.id;
   }
 });

@@ -23,7 +23,7 @@
     <h4>Hora</h4>
     <md-input-container>
             <label>Hora</label>
-       <md-select ng-model="time">
+       <md-select ng-model="time" ng-change="selectedHour()">
          <md-option ng-repeat="time in times" value="{{time}}">{{time}}</md-option>
        </md-select>
     </md-input-container>

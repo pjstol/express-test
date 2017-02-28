@@ -70,10 +70,12 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
     $scope.times = $scope.times.filter(dia).toHours();
     
   };
-  
+  console.log("Solo para comprobar git repository");
   $scope.selectedHour = function(){
     $scope.alfa = "https://storage.googleapis.com/" +
                   $scope.time.bucket.id + "/" +
                   $scope.time.id;
   }
+  
+  
 });

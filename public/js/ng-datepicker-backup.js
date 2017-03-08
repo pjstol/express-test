@@ -13,11 +13,14 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
   $scope.times = [];
   $scope.fotos = [];
   $scope.triton = [];
-
+  
+  //Request cuando carga Angular, se le pregunta todo lo que tiene al bucket y 
+  //devuelve un arreglo de objetos disponibles
   /*global $http*/
   $http({
       method: 'GET',
       url: '/api',
+      //Mas adelante ver si conviene pasar args a la consulta
       // params: {
       //     date: $scope.myDate.stringBusqueda,
       //     year: $scope.myDate.year,
@@ -29,7 +32,7 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
         console.log($scope.fotos);
         $scope.proyecto = $scope.triton[20].id.substr(0,5);
         $scope.camara =  $scope.triton[20].id.substr(5,4);
-        $scope.alfa = "https://storage.googleapis.com/" +
+        $scope.onDisplay = "https://storage.googleapis.com/" +
                       $scope.triton[$scope.triton.length-1].bucket.id + "/" +
                       $scope.triton[$scope.triton.length-1].id;
       });
@@ -72,9 +75,9 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
   };
   console.log("Solo para comprobar git repository");
   $scope.selectedHour = function(){
-    $scope.alfa = "https://storage.googleapis.com/" +
-                  $scope.time.bucket.id + "/" +
-                  $scope.time.id;
+    $scope.onDisplay = "https://storage.googleapis.com/" +
+                        $scope.time.bucket.id + "/" +
+                        $scope.time.id;
   }
   
   

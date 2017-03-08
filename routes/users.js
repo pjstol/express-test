@@ -20,7 +20,7 @@ router.get('/datepicker', function(req, res){
 });
 
 router.get('/angular', function(req, res){
-	res.render('angular-datepicker', {title: "Datepicker test"});
+	res.render('ng-datepicker', {title: "Datepicker test"});
 });
 
 

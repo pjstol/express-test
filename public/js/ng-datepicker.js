@@ -57,5 +57,6 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
                         $scope.time.bucket.id + "/" +
                         $scope.time.id;
   }
+  //End of the comments and this controller (git purposes)
 
 });

@@ -51,7 +51,7 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
       }
     }
   };
-
+  //Function to select a given photo depending on the time it was taken
   $scope.selectedHour = function(){
     $scope.onDisplay = "https://storage.googleapis.com/" +
                         $scope.time.bucket.id + "/" +

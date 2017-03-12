@@ -58,5 +58,6 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
                         $scope.time.id;
   }
   //End of the comments and this controller (git purposes)
+  //Adding a line to see if the changes here look the same in the other repository
 
 });

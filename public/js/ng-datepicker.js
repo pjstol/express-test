@@ -57,5 +57,5 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
                         $scope.time.bucket.id + "/" +
                         $scope.time.id;
   }
-  //Checking with this comment if thew merge conflict was resolved
+
 });

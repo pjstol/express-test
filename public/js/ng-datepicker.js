@@ -11,6 +11,7 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
                                     $scope.myDate.date;
   $scope.times = [];
   $scope.fotos = [];
+
   //Request cuando carga Angular, se le pregunta todo lo que tiene al bucket y
   //devuelve un arreglo de objetos disponibles
   /*global $http*/
@@ -24,7 +25,9 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
     $scope.onDisplay = "https://storage.googleapis.com/" +
                         $scope.fotos[$scope.fotos.length-1].bucket.id + "/" +
                         $scope.fotos[$scope.fotos.length-1].id;
+
     $scope.reqDate();
+
   });
 
   $scope.selectChanged = function(){
@@ -34,14 +37,12 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
   };
 
   $scope.reqDate = function(){
-
     $scope.myDate.year = ""+$scope.myDate.getFullYear();
     $scope.myDate.month = ("0" + ($scope.myDate.getMonth()+1)).slice(-2);
     $scope.myDate.date = ("0" + $scope.myDate.getDate()).slice(-2);
     $scope.myDate.stringBusqueda = ""+$scope.myDate.year+"-"+
                                       $scope.myDate.month+"-"+
                                       $scope.myDate.date;
-
     $scope.times = [];
     for(var i = 0; i<$scope.fotos.length; i++){
       if($scope.fotos[i].metadata.hasOwnProperty("metadata")){
@@ -57,6 +58,4 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
                         $scope.time.bucket.id + "/" +
                         $scope.time.id;
   }
-
-
 });

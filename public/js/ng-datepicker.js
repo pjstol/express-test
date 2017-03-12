@@ -27,7 +27,6 @@ angular.module('myApp', ['ngMaterial']).controller('AppCtrl', function($scope,$h
                         $scope.fotos[$scope.fotos.length-1].id;
 
     $scope.reqDate();
-
   });
 
   $scope.selectChanged = function(){
